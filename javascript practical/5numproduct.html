@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS Program 2</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+    <div class="container">  
+      <label for="int">Enter 5 numbers (comma-separated):</label> 
+      <input type="text" id="num">
+      <button onclick="fun()">submit</button>
+      <p id="result"></p>
+
+  </div>
+  
+    <script>
+        function fun() {
+            const numStr = document.getElementById("num").value;
+            let product = 1; 
+
+            const numArray = numStr.split(",");
+
+            for (let i = 0; i < numArray.length; i++) {
+                product *=  Number(numArray[i]);                
+            }
+
+            document.getElementById("result").textContent = "product of 5 number: "+product; 
+        }
+    </script>
+
+</body>
+</html>

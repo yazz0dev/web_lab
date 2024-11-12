@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS Program 1</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <label for="int">Enter 10 numbers (comma-separated):</label>
+        <input type="text" id="num">
+        <button onclick="fun()">Submit</button>
+        <p id="result"></p> 
+    </div>
+
+<script>
+
+function fun() {
+    var num = document.getElementById("num").value; 
+    var sum = 0;
+
+    var numArray = num.split(",").map(Number);
+
+    for (var i = 0; i < numArray.length; i++) {
+        sum += numArray[i];
+    }
+
+    document.getElementById("result").textContent = "sum of 10 number is:"+sum;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>Experimentt 6</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <label for="num">Enter a number:</label>
+        <input type="text" id="num">
+        <button onclick="fun()">Check</button>
+
+        <p id="result">Result will appear here</p>
+
+    </div>
+<script>
+function fun()
+{    
+    num=parseInt(document.getElementById("num").value);
+     var a=1,b=0,c=0,rs=""
+     while(b<=num)
+     {
+      rs += "&nbsp;" + c;
+      c=a+b
+      a=b
+      b=c
+     }
+document.getElementById("result").innerHTML = rs;
+}</script>
+
+</body>
+</html>

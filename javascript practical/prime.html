@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS Program 3</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <label for="num">Enter a number:</label>
+        <input type="text" id="num">
+        <button onclick="fun()">Check</button>
+        <p id="result">Result will appear here</p>
+    </div>
+
+<script>
+function fun() {
+var num =parseInt(document.getElementById("num").value); 
+    
+for(var i=2;i<num/2;i++)
+    if(num%i==0)
+    {
+    var flag=1
+    break
+    }
+
+if(flag==1)
+var rs="The number isnt prime"
+else
+var rs="The number is prime"
+document.getElementById("result").innerHTML = rs;
+}
+</script>
+
+</body>
+</html>

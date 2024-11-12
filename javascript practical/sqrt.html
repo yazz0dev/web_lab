@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title>Experimentt 6</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <label for="num">Enter a number:</label>
+        <input type="text" id="num">
+        <button onclick="fun()">Check</button>
+        <p id="result">Result will appear here</p>
+    </div>
+<script>
+    
+   function fun(){
+
+     num=parseInt(document.getElementById("num").value);
+     document.getElementById("result").textContent="The square root of number is "+Math.sqrt(num)
+    }
+    
+</script>
+
+</body>
+</html>

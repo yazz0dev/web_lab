@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Prime Numbers in Interval</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div class="container">
+    <label for="start">Start:</label>
+    <input type="text" id="start">
+    <label for="end">End:</label>
+    <input type="text" id="end">
+    <button onclick="findPrimes()">Find Primes</button>
+    <p id="result"></p>
+</div>
+
+
+<script>
+function findPrimes() {
+    const start = parseInt(document.getElementById("start").value);
+    const end = parseInt(document.getElementById("end").value);
+    
+  
+    let primes = [];
+    var rs=""
+    for (let num = start; num <= end; num++) {
+        let isPrime = true;
+    
+            for (let i = 2; i <= num/2; i++) 
+            {
+                if (num % i == 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+        
+        if (isPrime) {
+            rs += num + " ";
+        }
+    }
+    document.getElementById("result").textContent = "Prime numbers between " + start + " and " + end + ":\n" + rs
+}
+</script>
+
+</body>
+</html>

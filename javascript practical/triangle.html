@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS Program 3</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <label for="num">height:</label>
+        <input type="text" id="height"><br>  
+
+        <label for="num">height:</label>
+
+        <input type="text" id="base">  
+        <button onclick="fun()">Check</button>
+        <p id="result">Result will appear here</p>
+    </div>
+
+
+<script>
+function fun() {
+    var base = parseFloat(document.getElementById("base").value); 
+    var height = parseFloat(document.getElementById("height").value); 
+    var area = 0.5 * base * height;
+    document.getElementById("result").innerHTML = "The area of the triangle is: <br>" + area;
+}
+</script>
+
+</body>
+</html>
