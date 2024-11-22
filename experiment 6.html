@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Experiment 6</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <input type="number" id="input1"><br>
+    <button onclick="mts()">Math Functions</button> <br>
+    <p class="rs" id="result1"></p>
+    
+  </div>
+
+  <br><br>
+<div class="container">
+
+    <input id="input2"><br>
+    <button onclick="stg()">String Functions</button><br>
+    <p id="result2" class="rs"></p>
+</div>
+  <script>
+    let result = "";
+
+    function mts() {
+      let num = parseFloat(document.getElementById("input1").value)
+      document.getElementById("result1").innerHTML = "Square root: " +  Math.sqrt(num) + "<br>" 
+       + "Power of 2: " +  Math.pow(num, 2) + "<br>"
+       + "Absolute value: " + Math.abs(num) + "<br>"
+       + "Floor: " + Math.floor(num) + "<br>"
+       + "Ceiling: " + Math.ceil(num) + "<br>"
+       + "Round: " + Math.round(num) + "<br>"
+       + "Random: " + Math.random() + "<br>"
+       + "maximum of 10 and&nbsp;"+num+": " + Math.max(num,10) + "<br>" 
+       + "minimum of 5 and&nbsp;"+num+": " + Math.min(num,5) + "<br>"
+       ;
+    }
+
+    function stg() {
+      let inputValue = document.getElementById("input2").value;
+      document.getElementById("result2").innerHTML = 
+       "Uppercase: " + inputValue.toUpperCase() + "<br>"
+       + "Lowercase: " + inputValue.toLowerCase() + "<br>"
+       + "Length: " + inputValue.length + "<br>"
+       + "Replace 'a' with '$': " + inputValue.replace('a', '$') + "<br>"
+       + "Slice(1, 6): " + inputValue.slice(0, 5) + "<br>"
+       + "Substring(3, 6): " + inputValue.substring(2, 5) + "<br>" 
+       + "IndexOf 'a': " + inputValue.indexOf('a') + "<br>" 
+       + "LastIndexOf 'b': " + inputValue.lastIndexOf('b') + "<br>";
+    }
+  </script>
+</body>
+</html>
