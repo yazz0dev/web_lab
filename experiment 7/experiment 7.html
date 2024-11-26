@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Calendar Generator</title>
+    <link rel="stylesheet" href="cal.css">
+</head>
+
+<body>
+    <div class="container">
+        <input type="number" id="yearInput" placeholder="Enter Year">
+        <button onclick="generateCalendar()">Generate Calendar</button>
+        <div id="calendar"></div>
+    </div>
+
+    <script>
+        function generateCalendar() {
+            const year = document.getElementById('yearInput').value;
+            let calendarHTML = `<h1>${year}</h1>`;
+
+            for (let m = 0; m < 12; m++) 
+            {
+                // Create a date object for the first day of the current month
+                const date = new Date(year, m, 1);
+
+                // Get the number of days in the current month
+                const daysInMonth = new Date(year, m + 1, 0).getDate();
+
+                // Get the month name
+                const mNames = ["January", "February", "March", "April", "May", "June",
+                    "July", "August", "September", "October", "November", "December"
+                ];
+                const mName = mNames[date.getMonth()];
+
+
+                calendarHTML += `<h2>${mName}</h2><table><tr><th>S</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th></tr><tr>`;
+
+                // Add empty cells for days before the first day of the month
+                calendarHTML += '<td></td>'.repeat(date.getDay());
+
+                // Loop through each day of the month
+                for (let day = 1; day <= daysInMonth; day++) {
+
+                    // Add the day as a table cell
+                    calendarHTML += `<td class=" ">${day}</td>`;
+
+                    // If the current day is the last day of the week (Saturday), start a new row
+                    if ((date.getDay() + day) % 7 === 0)
+                        calendarHTML += '</tr><tr>';
+                }
+
+                // Close the table row and the table for the current month
+                calendarHTML += '</tr></table>';
+            }
+
+
+            document.getElementById('calendar').innerHTML = calendarHTML;
+        }
+    </script>
+</body>
+
+</html>
