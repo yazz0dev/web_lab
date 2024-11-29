@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Experiment 9</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <center>
+         <div class="container">
+    <button onclick="changeBackgroundColor()">Change Background Color</button> <br>    
+  </div>
+    </center>
+ 
+
+  <script>
+    let i = 0;
+    const colors = ['red', 'blue', 'black', 'azure'];
+
+    function changeBackgroundColor() {
+      i = (i + 1) % colors.length; 
+      document.body.style.backgroundColor = colors[i];
+    }
+  </script>
+</body>
+</html>
