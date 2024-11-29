@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Experiment 9</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <img height="300px" width="400px" onmouseover="change()" id="myImage" src="/home/ksb/Desktop/yasin/web/aaimages/ny.jpg" alt="Initial Image">
+    <br><p id="txt">image src= ny.jpg</p>
+  </div>
+
+  <script>
+    let i = 0;
+    const images = [ 'flower.jpg', 'person.jpg', 'lisa.jpg', 'tensor.jpg'];
+    const imagePath = "/home/ksb/Desktop/yasin/web/aaimages/"; 
+
+    function change() {
+      document.getElementById('myImage').src = imagePath + images[i];
+      document.getElementById('txt').innerText = "image src= "+ images[i];
+      i = (i + 1) % images.length; 
+    }
+  </script>
+</body>
+</html>
