@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+    <style>
+        form {
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px bisque;
+            width: 500px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        input, textarea, select {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 5px;
+        }
+
+        .error {
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <center>
+        <form id="form1" onsubmit="return validateForm()">
+            <h1>Form Registration</h1>
+            <label for="username">Name:</label>
+            <input type="text" id="username" placeholder="Name">
+            <div id="usernameError" class="error"></div>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob">
+            <div id="dobError" class="error"></div>
+            <div id="ageError" class="error"></div>
+
+            <label for="phone">Telephone:</label>
+            <input type="tel" id="phone" placeholder="Telephone (e.g., 1234567890)">
+            <div id="telephoneError" class="error"></div>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Email">
+            <div id="emailError" class="error"></div>
+
+            <label for="address">Address:</label>
+            <textarea id="address" placeholder="Address"></textarea>
+            <div id="addressError" class="error"></div>
+
+            <label for="qualification">Qualification:</label>
+            <select id="qualification">
+                <option value="">Select a Qualification</option>
+                <option value="bachelors">Bachelor's Degree</option>
+                <option value="masters">Master's Degree</option>
+            </select>
+            <div id="qualificationError" class="error"></div>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Password">
+
+            <label for="cpassword">Confirm Password:</label>
+            <input type="password" id="cpassword" placeholder="Confirm Password">
+            <div id="passwordError" class="error"></div><br>
+
+            <button type="submit" style='background-color: lightcoral;  padding: 10px 20px; border: none; border-radius: 5px; '>Submit</button>
+        </form>
+    </center>
+
+    <script>
+        function validateForm() {
+            clearErrors();
+            let isValid = true;
+
+            // Username validation
+            const username = document.getElementById('username').value;
+            if (username.length < 4) {
+                document.getElementById('usernameError').innerText = 'Name should be at least 4 characters.';
+                isValid = false;
+            }
+
+            // Date of Birth and Age validation
+
+               const dob = document.getElementById('dob').value;
+                const today = new Date();
+                const birthDate = new Date(dob);
+                let age = today.getFullYear() - birthDate.getFullYear();
+                const m = today.getMonth() - birthDate.getMonth();
+              
+
+                if (age < 18) {
+                    document.getElementById('ageError').innerText = 'You must be at least 18 years old.';
+                    isValid = false;
+                }
+            
+        
+
+            // Telephone validation
+            const phone = document.getElementById('phone').value;
+            if (phone.length !== 10) {
+                document.getElementById('telephoneError').innerText = 'Telephone number must be 10 digits long.';
+                isValid = false;
+            }
+
+            // Email validation
+            const email = document.getElementById('email').value;
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                document.getElementById('emailError').innerText = 'Please enter a valid email address.';
+                isValid = false;
+            }
+
+            // Address validation
+            const address = document.getElementById('address').value;
+            if (!address) {
+                document.getElementById('addressError').innerText = 'Address is required.';
+                isValid = false;
+            }
+
+            // Qualification validation
+            const qualification = document.getElementById('qualification').value;
+            if (!qualification) {
+                document.getElementById('qualificationError').innerText = 'Qualification is required.';
+                isValid = false;
+            }
+
+            // Password validation
+            const password = document.getElementById('password').value;
+            if (password.length < 6) {
+                document.getElementById('passwordError').innerText = 'Password must be at least 6 characters long.';
+                isValid = false;
+            }
+
+            // Confirm Password validation
+            const cpassword = document.getElementById('cpassword').value;
+            if (password !== cpassword) {
+                document.getElementById('passwordError').innerText = 'Passwords do not match.';
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert("Form submitted successfully!");
+                document.getElementById('form1').reset();
+            }
+
+            return false;
+        }
+
+        function clearErrors() {
+            document.querySelectorAll('.error').forEach(element => element.innerText = "");
+        }
+    </script>
+</body>
+</html>
