@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Experiment 11</title>
+    <style>
+   
+        .q { margin-bottom: 30px; }
+        .o label {
+            padding: 10px;
+            border: 1px solid #ccc; /* Neutral gray border */
+            border-radius: 8px;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        .o input { display: none; }
+        .o input:checked + label {
+            background-color: #f0f8ff; /* Soft light blue for checked options */
+            border-color: #007bff; /* Accent blue for the selected label */
+        }
+        .c {
+            background-color: #28a745 !important; /* Vibrant green for correct answers */
+            border-color: #218838 !important; /* Darker green for the border */
+            color: white; /* White text for better readability */
+        }
+        .w {
+            background-color: #dc3545 !important; /* Red for incorrect answers */
+            border-color: #c82333 !important; /* Darker red for the border */
+            color: white; /* White text for readability */
+        }
+        .u label {
+            color: #ff8c00; /* Soft orange text for unanswered questions */
+        }
+        .u {
+            border-color: #ff8c00; /* Soft orange border for unanswered questions */
+        }
+        button {
+            width: 20%;
+            background-color: #ff6f61; /* Salmon color for the button */
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 20px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #e05e4e; /* Slightly darker salmon on hover */
+        }
+        #r {
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
+        #rb {
+            display: none;
+        }
+        
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body bgcolor="azure">
+ <center>
+    <h1>Web Development Quiz</h1>
+    <form id="f">
+        <!-- Questions 1 to 10 -->
+        <div class="q"><p>1. HTML stands for?</p><div class="o">
+            <input type="radio" id="q1-1" name="q1" value="HyperText"><label for="q1-1">HyperText</label>
+            <input type="radio" id="q1-2" name="q1" value="HighText"><label for="q1-2">HighText</label>
+        </div></div>
+        <div class="q"><p>2. CSS stands for?</p><div class="o">
+            <input type="radio" id="q2-1" name="q2" value="Cascading"><label for="q2-1">Cascading</label>
+            <input type="radio" id="q2-2" name="q2" value="Counter"><label for="q2-2">Counter</label>
+        </div></div>
+        <div class="q"><p>3. JS stands for?</p><div class="o">
+            <input type="radio" id="q3-1" name="q3" value="JavaScript"><label for="q3-1">JavaScript</label>
+            <input type="radio" id="q3-2" name="q3" value="JavaSuper"><label for="q3-2">JavaSuper</label>
+        </div></div>
+        <div class="q"><p>4. A framework of JS?</p><div class="o">
+            <input type="radio" id="q4-1" name="q4" value="React"><label for="q4-1">React</label>
+            <input type="radio" id="q4-2" name="q4" value="Vue"><label for="q4-2">Vue</label>
+        </div></div>
+        <div class="q"><p>5. A keyword to define variables?</p><div class="o">
+            <input type="radio" id="q5-1" name="q5" value="var"><label for="q5-1">var</label>
+            <input type="radio" id="q5-2" name="q5" value="let"><label for="q5-2">let</label>
+        </div></div>
+        <div class="q"><p>6. Non-primitive data type?</p><div class="o">
+            <input type="radio" id="q6-1" name="q6" value="Array"><label for="q6-1">Array</label>
+            <input type="radio" id="q6-2" name="q6" value="Number"><label for="q6-2">Number</label>
+        </div></div>
+        <div class="q"><p>7. Command to add files in Git?</p><div class="o">
+            <input type="radio" id="q7-1" name="q7" value="add"><label for="q7-1">add</label>
+            <input type="radio" id="q7-2" name="q7" value="push"><label for="q7-2">push</label>
+        </div></div>
+        <div class="q"><p>8. A library of JS?</p><div class="o">
+            <input type="radio" id="q8-1" name="q8" value="jQuery"><label for="q8-1">jQuery</label>
+            <input type="radio" id="q8-2" name="q8" value="Flask"><label for="q8-2">Flask</label>
+        </div></div>
+        <div class="q"><p>9. To make a webpage interactive?</p><div class="o">
+            <input type="radio" id="q9-1" name="q9" value="JavaScript"><label for="q9-1">JavaScript</label>
+            <input type="radio" id="q9-2" name="q9" value="HTML"><label for="q9-2">HTML</label>
+        </div></div>
+        <div class="q"><p>10. To style a webpage?</p><div class="o">
+            <input type="radio" id="q10-1" name="q10" value="CSS"><label for="q10-1">CSS</label>
+            <input type="radio" id="q10-2" name="q10" value="HTML"><label for="q10-2">HTML</label>
+        </div></div>
+        <div class="buttons-container">
+            <button type="button" id="submitBtn" onclick="s()">Submit</button>
+            <button type="button" id="rb" onclick="r()" style="display: none;">Retake Quiz</button>
+        </div>
+    </form>
+    <div id="r"></div>
+ </center>
+    <script>
+        const a = {q1: "HyperText", q2: "Cascading", q3: "JavaScript", q4: "React", q5: "var",
+                   q6: "Array", q7: "add", q8: "jQuery", q9: "JavaScript", q10: "CSS"};
+
+        function s() {
+            const f = document.getElementById("f"), r = document.getElementById("r");
+            let sc = 0;
+
+            for (const [q, ans] of Object.entries(a)) {
+                const sel = f.querySelector(`input[name="${q}"]:checked`), qDiv = f[q][0].closest('.q');
+                qDiv.classList.remove('u');
+
+                if (!sel) qDiv.classList.add('u');
+                else {
+                    const lbl = sel.nextElementSibling;
+                    if (sel.value === ans) { 
+                        lbl.classList.add("c"); 
+                        sc++; 
+                    }
+                    else lbl.classList.add("w");
+                    f.querySelectorAll(`input[name="${q}"]`).forEach(opt => opt.disabled = true);
+                }
+            }
+
+            r.textContent = `Your score: ${sc}/10`;
+            document.getElementById("submitBtn").style.display = "none"; // Hide submit button
+            document.getElementById("rb").style.display = "block"; // Show retake button
+        }
+
+        function r() {
+            document.getElementById("f").reset();
+            document.getElementById("r").textContent = "";
+            document.getElementById("rb").style.display = "none";
+            document.getElementById("submitBtn").style.display = "block"; // Show submit button again
+            document.querySelectorAll('.o label').forEach(lbl => lbl.classList.remove("c", "w"));
+            document.querySelectorAll('.o input').forEach(opt => opt.disabled = false);
+            document.querySelectorAll('.q').forEach(q => q.classList.remove('u'));
+        }
+    </script>
+</body>
+</html>
