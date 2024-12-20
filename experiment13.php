@@ -3,51 +3,51 @@
 <head>
 <title>KSEB Bill</title>
 <style>
-/* General Styles */
+  
 body {
   font-family: sans-serif;
-  background-color: #f8f9fa; /* Light background */
+  background-color: #f8f9fa; 
 }
 
 /* Form Container */
 .form-container {
   width: 350px;
   margin: 20px auto;
-  padding: 25px; /* Increased padding */
-  border: 1px solid #ced4da; /* Lighter border */
-  border-radius: 5px; /* Rounded corners */
-  background-color: #fff; /* White background */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 25px;
+  border: 1px solid #ced4da; 
+  border-radius: 5px; 
+  background-color: #fff; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
 label {
   display: block;
   margin-bottom: 5px;
-  font-weight: 600; /* Slightly bolder labels */
+  font-weight: 600; 
 }
 
 input[type="text"],
 input[type="number"] {
-  width: 100%; /* Full width */
-  padding: 10px; /* Increased padding */
-  margin-bottom: 15px; /* Increased margin */
+  width: 100%; 
+  padding: 10px; 
+  margin-bottom: 15px; 
   border: 1px solid #ced4da;
-  border-radius: 4px; /* Rounded corners */
-  box-sizing: border-box; /* Include padding and border in width */
+  border-radius: 4px;
+  box-sizing: border-box; 
 }
 
 input[type="submit"] {
-  background-color: #007bff; /* Primary blue */
+  background-color: #007bff; 
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Smooth transition */
+  transition: background-color 0.3s ease;
 }
 
 input[type="submit"]:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3; 
 }
 
 /* Bill Container */
@@ -68,16 +68,15 @@ table {
 
 th,
 td {
-  padding: 8px; /* Increased padding */
+  padding: 8px; 
   text-align: left;
   border: 1px solid #ced4da;
 }
 
 th {
-  background-color: #e9ecef; /* Light gray header */
+  background-color: #e9ecef; 
 }
 
-/* Text Alignment */
 .header {
   text-align: center;
   margin-bottom: 15px;
@@ -113,8 +112,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $energyCharges = ($unit <= 300) ? $unit * 6.40 : (($unit <= 350) ? $unit * 7.25 : (($unit <= 400) ? $unit * 7.60 : (($unit <= 500) ? $unit * 7.90 : $unit * 8.80)));
   echo "<div class='bill-container'><div class='header'><h2>KSEB</h2><h3>ELECTRICITY BILL</h3>";
   echo "</div><table><tr><td>Consumer no: C#" . $_POST["consumerId"] . "</td></tr><tr><td>Name: " . $_POST["name"] . "</td></tr>";
-  echo "<tr><td>Address: VENGAYIL</td></tr><tr><td>Due Date: 08/04/2024</td></tr>";
-  echo "<tr><td>Disconn Dt: 24/12/2024</td></tr></table><table><tr><th class='center-align'>Unit</th><th class='center-align'>Curr</th>";
+  echo "<tr><td>Address: VENGAYIL</td></tr><tr><td>Due Date: 25/12/2024</td></tr>";
+  echo "<tr><td>Disconn Dt: 30/12/2024</td></tr></table><table><tr><th class='center-align'>Unit</th><th class='center-align'>Curr</th>";
   echo "<th class='center-align'>Cons</th></tr><tr><td class='center-align'>KWH/A/I</td><td class='center-align'>" . $unit . "</td><td class='center-align'>" . $unit . "</td></tr></table>";
   echo "<table><tr><td>Energy Charges:</td><td class='right-align'>" . number_format($energyCharges, 2) . "</td></tr><tr><td>Other Charges:</td><td class='right-align'>60.00</td></tr>";
   echo "<tr><td>Payable:</td><td class='right-align'>" . number_format($energyCharges + 60, 2) . "</td></tr></table><p class='right-align'>Pay Online www.kseb.in</p></div>";
